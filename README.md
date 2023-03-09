@@ -35,11 +35,18 @@ chmod 600 <id>_rsa.pub
 - clone of this repository
 
 ```sh
-sudo apt install --yes curl git software-properties-common
-git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
+sudo apt --yes update && apt-get --yes upgrade
+sudo apt --yes install curl git software-properties-common
+sudo add-apt-repository ppa:ansible/ansible
 
-# You can install Ansible by running this script in the root of this repository:
-./scripts/install-ansible.sh
+sudo apt --yes update
+sudo apt --yes install ansible python3-pip
+```
+
+Clone this repository:
+
+```sh
+git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
 ```
 
 #### Run Ansible playbook
@@ -50,6 +57,8 @@ Go to the root of the cloned repository, and run the command. Enter your user ac
 ansible-playbook main.playbook.yml --ask-become-pass
 ansible-playbook main.playbook.yml --ask-become-pass --tags zsh,nvm
 ```
+
+Finally, reboot your system.
 
 ## Development
 
@@ -78,14 +87,11 @@ Clone this repository:
 git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
 ```
 
-Now you can use Ansible in order to install Vagrant and VirtualBox
-by running this command in the root of this repository:
+Now you can use Ansible in order to install Vagrant and VirtualBox by running this command in the root of this repository:
 
 ```sh
 ansible-playbook dev.playbook.yml --ask-become-pass
 ```
-
-Finally, reboot your system.
 
 ### Start, provision, ssh, and destroy virtual machine
 
