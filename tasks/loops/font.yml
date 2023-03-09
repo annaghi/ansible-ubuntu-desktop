@@ -1,0 +1,24 @@
+---
+- name: Fonts · Install fonts via apt
+  ansible.builtin.apt:
+    name: fonts-firacode
+    update_cache: true
+
+- name: Fonts · Create nerd directory
+  ansible.builtin.file:
+    path: "{{ font_dest }}"
+    state: directory
+    mode: 0755
+
+- name: Fonts · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_font
+  vars:
+    font_name: "{{ item.font_name }}"
+    font_url: "{{ item.font_url }}"
+  loop: "{{ config_fonts_nerd }}"
+
+- name: Fonts · Reload font cache
+  ansible.builtin.command: "fc-cache -fv {{ font_dest }}"
+  register: fc_cache_result
+  changed_when: fc_cache_result.rc != 0

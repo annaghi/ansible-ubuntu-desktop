@@ -1,0 +1,8 @@
+---
+- name: Binary · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_bin
+  vars:
+    bin_name: "{{ item.bin_name }}"
+    bin_url: "{{ item.bin_url }}"
+  loop: "{{ config_packages_bin }}"

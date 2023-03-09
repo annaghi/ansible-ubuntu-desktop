@@ -1,0 +1,15 @@
+---
+# tasks file for install_package_deb_sha
+
+- name: "{{ deb_sha_name }} · Download .deb file with checksum"
+  ansible.builtin.get_url:
+    url: "{{ deb_sha_url }}"
+    dest: "{{ deb_sha_dest }}/{{ deb_sha_name }}.deb"
+    checksum: "{{ deb_sha_checksum }}"
+  when: deb_sha_name not in ansible_facts.packages
+
+- name: Download and install Minikube
+  ansible.builtin.command: "install {{ deb_sha_dest }}/{{ deb_sha_name }}.deb {{ deb_sha_dest_symlink }}/{{ deb_sha_name }}"
+  args:
+    creates: "{{ deb_sha_dest_symlink }}/{{ deb_sha_name }}"
+  when: deb_sha_name not in ansible_facts.packages

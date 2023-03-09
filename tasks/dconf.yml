@@ -1,0 +1,74 @@
+---
+- name: org/gnome/desktop/interface/clock-show-weekday
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/clock-show-weekday"
+    value: "true"
+
+- name: org/gnome/desktop/interface/color-scheme
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/color-scheme"
+    value: "'prefer-dark'"
+
+- name: org/gnome/desktop/peripherals/mouse/left-handed
+  community.general.dconf:
+    key: "/org/gnome/desktop/peripherals/mouse/left-handed"
+    value: "true"
+
+- name: org/gnome/nautilus/preferences/show-hidden-files
+  community.general.dconf:
+    key: "/org/gnome/nautilus/preferences/show-hidden-files"
+    value: "true"
+
+- name: org/gnome/settings-daemon/plugins/color/night-light-enabled
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
+    value: "true"
+
+- name: org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic"
+    value: "false"
+
+- name: org/gnome/settings-daemon/plugins/color/night-light-schedule-from
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-from"
+    value: "6.0"
+
+- name: org/gnome/shell/extensions/dash-to-dock/dock-position
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dock-position"
+    value: "'BOTTOM'"
+
+- name: org/gnome/shell/favorite-apps
+  community.general.dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value:
+      [
+        "gnome-control-center.desktop",
+        "gnome-system-monitor.desktop",
+        "ca.desrt.dconf-editor.desktop",
+        "org.gnome.baobab.desktop",
+        "slack.desktop",
+        "Zoom.desktop",
+        "google-chrome.desktop",
+        "firefox-developer-edition.desktop",
+        "firefox_firefox.desktop",
+        "brave-browser.desktop",
+        "org.gnome.Nautilus.desktop",
+        "org.gnome.Terminal.desktop",
+        "code.desktop",
+        "jetbrains-idea-ce.desktop",
+        "org.gnome.gedit.desktop",
+        "virtualbox.desktop",
+        "jetbrains-fleet.desktop",
+      ]
+
+- name: org/gtk/settings/file-chooser/show-hidden
+  community.general.dconf:
+    key: "/org/gtk/settings/file-chooser/show-hidden"
+    value: "true"
+
+- name: system/locale/region
+  community.general.dconf:
+    key: "/system/locale/region"
+    value: "'en_CA.UTF-8'"

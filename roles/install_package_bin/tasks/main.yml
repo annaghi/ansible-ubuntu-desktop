@@ -1,0 +1,9 @@
+---
+# tasks file for install_package_bin
+
+- name: "{{ bin_name }} · Extract package"
+  ansible.builtin.unarchive:
+    src: "{{ bin_url }}"
+    dest: "{{ bin_dest }}"
+    remote_src: true
+    mode: 0755

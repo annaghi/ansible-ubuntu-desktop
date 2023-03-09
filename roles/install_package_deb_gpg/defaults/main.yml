@@ -1,0 +1,10 @@
+---
+# defaults file for install_package_deb_gpg
+
+deb_gpg_name: ""
+deb_gpg_key_url: ""
+deb_gpg_keyring: ""
+deb_gpg_url: ""
+deb_gpg_release: ""
+deb_gpg_section: ""
+deb_gpg_source: ""

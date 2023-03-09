@@ -1,0 +1,7 @@
+---
+# https://github.com/microsoft/vscode/issues/82524
+- name: VSCode · Install extensions
+  ansible.builtin.command: "code --install-extension {{ item }}"
+  loop: "{{ lookup('file', 'files/vscode-extensions').splitlines() }}"
+  register: install_extensions_result
+  changed_when: install_extensions_result.rc != 0

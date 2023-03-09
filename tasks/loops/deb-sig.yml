@@ -1,0 +1,12 @@
+---
+- name: Deb SIG · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_deb_sig
+  vars:
+    deb_sig_name: "{{ item.deb_sig_name }}"
+    deb_sig_url: "{{ item.deb_sig_url }}"
+    deb_sig_key_url: "{{ item.deb_sig_key_url }}"
+    deb_sig_key: "{{ item.deb_sig_key }}"
+    deb_sig_thumbprint: "{{ item.deb_sig_thumbprint }}"
+    deb_sig_policy: "{{ item.deb_sig_policy }}"
+  loop: "{{ config_packages_deb_sig }}"

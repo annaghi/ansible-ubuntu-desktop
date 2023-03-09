@@ -1,0 +1,62 @@
+---
+- name: Docker · Install
+  block:
+    - name: Docker · Install official GPG key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: "{{ deb_gpg_keyrings }}/docker.asc"
+
+    - name: Docker · Setup Debian repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64 signed-by={{ deb_gpg_keyrings }}/docker.asc] https://download.docker.com/linux/ubuntu jammy stable"
+        filename: docker
+
+    - name: Docker · Install via apt
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+
+- name: Docker · User permissions
+  block:
+    - name: Docker · Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+        state: present
+
+    - name: Docker · Ensure docker users are added to the docker group.
+      ansible.builtin.user:
+        name: "{{ ansible_env.USER }}"
+        groups: docker
+        append: true
+
+    - name: Docker · Reset ssh connection to allow user changes to affect ansible user
+      ansible.builtin.meta: reset_connection
+
+- name: Docker · Multi-stage containers
+  block:
+    - name: Docker · Ensure /etc/docker/daemon.json file exists
+      ansible.builtin.copy:
+        content: "{}"
+        dest: /etc/docker/daemon.json
+        mode: 0644
+        force: false
+
+    - name: Docker · Load var from file
+      ansible.builtin.slurp:
+        src: /etc/docker/daemon.json
+      register: imported_var
+
+    - name: Docker - append more key/values
+      ansible.builtin.set_fact:
+        imported_var: "{{ imported_var.content|b64decode|from_json | default([]) | combine({ 'features': { 'buildkit' : true } }) }}"
+
+    - name: Docker · write var to file
+      ansible.builtin.copy:
+        content: "{{ imported_var | to_nice_json }}"
+        dest: /etc/docker/daemon.json
+        mode: 0644

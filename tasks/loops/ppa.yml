@@ -1,0 +1,8 @@
+---
+- name: Deb PPA · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_ppa
+  vars:
+    ppa_name: "{{ item.ppa_name }}"
+    ppa_url: "{{ item.ppa_url }}"
+  loop: "{{ config_packages_ppa }}"

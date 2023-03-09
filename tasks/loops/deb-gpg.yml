@@ -1,0 +1,13 @@
+---
+- name: Deb GPG · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_deb_gpg
+  vars:
+    deb_gpg_name: "{{ item.deb_gpg_name }}"
+    deb_gpg_key_url: "{{ item.deb_gpg_key_url }}"
+    deb_gpg_keyring: "{{ item.deb_gpg_keyring }}"
+    deb_gpg_url: "{{ item.deb_gpg_url }}"
+    deb_gpg_release: "{{ item.deb_gpg_release | default('') }}"
+    deb_gpg_section: "{{ item.deb_gpg_section | default('') }}"
+    deb_gpg_source: "{{ item.deb_gpg_source }}"
+  loop: "{{ config_packages_deb_gpg }}"

@@ -1,0 +1,7 @@
+---
+# defaults file for install_package_git
+
+git_name: ""
+git_url: ""
+git_dest: ""
+git_version: ""

@@ -1,0 +1,11 @@
+---
+- name: Git · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_git
+  vars:
+    git_name: "{{ item.git_name }}"
+    git_url: "{{ item.git_url }}"
+    git_dest: "{{ item.git_dest }}"
+    git_version: "{{ item.git_version }}"
+    git_source: "{{ item.git_source }}"
+  loop: "{{ config_packages_git }}"

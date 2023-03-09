@@ -1,0 +1,39 @@
+---
+- name: Dotfiles · Copy files to HOME
+  ansible.builtin.copy:
+    src: .dotfiles
+    dest: "{{ ansible_env.HOME }}"
+    mode: 0644
+    directory_mode: 0700
+
+- name: Dotfiles · Build files list
+  ansible.builtin.find:
+    paths: "{{ ansible_env.HOME }}/.dotfiles"
+    file_type: file
+    recurse: true
+    hidden: true
+  register: dotfiles
+
+- name: Dotfiles · Create folder structure in HOME
+  ansible.builtin.file:
+    path: "{{ item.path | regex_replace('^(?P<path>.+)/\\.dotfiles(?P<file>.+)$', '\\g<path>\\g<file>') | dirname }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ dotfiles.files }}"
+
+# - name: Dotfiles · Adding Files to the LIST
+#   ansible.builtin.set_fact:
+#     debug_files: "{{ debug_files + [item.path | regex_replace('^(?P<path>.+)/\\.dotfiles(?P<file>.+)$', '\\g<path>\\g<file>')] }}"
+#   loop: "{{ dotfiles.files }}"
+#
+# - name: Dotfiles · DEBUG
+#   ansible.builtin.debug:
+#     var: debug_files
+
+- name: Dotfiles · Create symlinks
+  ansible.builtin.file:
+    src: "{{ item.path }}"
+    dest: "{{ item.path | regex_replace('^(?P<path>.+)/\\.dotfiles(?P<file>.+)$', '\\g<path>\\g<file>') }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles.files }}"

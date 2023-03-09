@@ -1,0 +1,73 @@
+---
+- hosts: all
+  gather_facts: false
+
+  vars:
+    - deb_gpg_keyrings: /usr/share/keyrings
+    - deb_sha_dest: /opt
+    - deb_sig_keyrings: /usr/share/debsig/keyrings
+    - deb_sig_policies: /etc/debsig/policies
+    - deb_sig_dest: /opt
+    - dpkg_sig_dest: /opt
+
+  pre_tasks:
+    - name: APT · Updates
+      become: true
+      block:
+        - name: APT · Update cache if needed
+          ansible.builtin.apt:
+            update_cache: true
+            cache_valid_time: 3600
+
+        - name: APT · Update all packages to the latest version
+          ansible.builtin.apt:
+            name: "*"
+
+        - name: APT · Upgrade all packages to the latest version
+          ansible.builtin.apt:
+            upgrade: safe
+            update_cache: true
+      tags: always
+
+  tasks:
+    - name: Install packages defined in config.yml
+      become: true
+      block:
+        - name: APT · Install essential packages
+          ansible.builtin.apt:
+            name:
+              - curl
+              - gpg
+              - python-pip3
+
+        # https://www.virtualbox.org/wiki/Linux_Downloads
+        - name: VirtualBox · Installation
+          ansible.builtin.include_role:
+            name: install_package_deb_gpg
+          vars:
+            deb_gpg_name: virtualbox-7.0
+            deb_gpg_key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+            deb_gpg_keyring: oracle-virtualbox-2016.asc
+            deb_gpg_url: https://download.virtualbox.org/virtualbox/debian
+            deb_gpg_release: jammy
+            deb_gpg_section: contrib
+            deb_gpg_source: oracle-virtualbox
+
+        # https://developer.hashicorp.com/vagrant/downloads
+        - name: Vagrant · Installation
+          ansible.builtin.include_role:
+            name: install_package_deb_gpg
+          vars:
+            deb_gpg_name: vagrant
+            deb_gpg_key_url: https://apt.releases.hashicorp.com/gpg
+            deb_gpg_keyring: hashicorp-archive-keyring.asc
+            deb_gpg_url: https://apt.releases.hashicorp.com
+            deb_gpg_release: jammy
+            deb_gpg_section: main
+            deb_gpg_source: hashicorp
+
+    - name: Python - Install psutil
+      ansible.builtin.command: "pip3 install psutil"
+      register: install_psutil_result
+      failed_when: install_psutil_result.rc != 0
+      changed_when: install_psutil_result.rc == 0

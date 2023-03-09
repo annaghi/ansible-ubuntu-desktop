@@ -1,0 +1,19 @@
+---
+# tasks file for install_package_deb_gpg
+
+- name: "{{ deb_gpg_name }} · Install official GPG key"
+  ansible.builtin.get_url:
+    url: "{{ deb_gpg_key_url }}"
+    dest: "{{ deb_gpg_keyrings }}/{{ deb_gpg_keyring }}"
+  when: deb_gpg_name not in ansible_facts.packages
+
+- name: "{{ deb_gpg_name }} · Setup Debian repository"
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by={{ deb_gpg_keyrings }}/{{ deb_gpg_keyring }}] {{ deb_gpg_url }} {{ deb_gpg_release }} {{ deb_gpg_section }}"
+    filename: "{{ deb_gpg_source }}"
+  when: deb_gpg_name not in ansible_facts.packages
+
+- name: "{{ deb_gpg_name }} · Ensure package is installed"
+  ansible.builtin.apt:
+    name: "{{ deb_gpg_name }}"
+    update_cache: true

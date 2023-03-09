@@ -1,0 +1,8 @@
+---
+# defaults file for install_package_comp
+
+comp_name: ""
+comp_url: ""
+comp_compression: ""
+comp_checksum: ""
+comp_symlink: 0

@@ -1,0 +1,9 @@
+---
+- name: Deb SHA · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_deb_sha
+  vars:
+    deb_sha_name: "{{ item.deb_sha_name }}"
+    deb_sha_url: "{{ item.deb_sha_url }}"
+    deb_sha_checksum: "{{ item.deb_sha_checksum }}"
+  loop: "{{ config_packages_deb_sha }}"

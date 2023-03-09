@@ -1,0 +1,46 @@
+---
+# tasks file for install_package_dpkg_sig
+
+- name: "{{ dpkg_sig_name }} · Download official public key"
+  ansible.builtin.get_url:
+    url: "{{ dpkg_sig_key_url }}"
+    dest: "{{ dpkg_sig_dest }}{{ dpkg_sig_key }}"
+  when: dpkg_sig_name not in ansible_facts.packages
+
+- name: "{{ dpkg_sig_name }} · Import public key to ~/.gnupg/pubring.kbx"
+  become: false
+  ansible.builtin.command: "gpg --import {{ dpkg_sig_dest }}{{ dpkg_sig_key }}"
+  register: import_public_key_result
+  failed_when: import_public_key_result.rc != 0
+  changed_when: import_public_key_result.rc == 0
+  when: dpkg_sig_name not in ansible_facts.packages
+
+- name: "{{ dpkg_sig_name }} · Download .deb file"
+  ansible.builtin.get_url:
+    url: "{{ dpkg_sig_url }}"
+    dest: "{{ dpkg_sig_dest }}{{ dpkg_sig_name }}.deb"
+  when: dpkg_sig_name not in ansible_facts.packages
+
+- name: "{{ dpkg_sig_name }} · Verify .deb file with public key"
+  become: false
+  ansible.builtin.command: "dpkg-sig --verify {{ dpkg_sig_dest }}{{ dpkg_sig_name }}.deb"
+  register: verify_result
+  failed_when: verify_result.rc != 0
+  changed_when: verify_result.rc == 0
+  when: dpkg_sig_name not in ansible_facts.packages
+
+- name: "{{ dpkg_sig_name }} · Install package from .deb file"
+  ansible.builtin.apt:
+    deb: "{{ dpkg_sig_dest }}{{ dpkg_sig_name }}.deb"
+    update_cache: false
+  when: dpkg_sig_name not in ansible_facts.packages
+
+- name: "{{ dpkg_sig_name }} · Delete temporary .deb file"
+  ansible.builtin.file:
+    path: "{{ dpkg_sig_dest }}{{ dpkg_sig_name }}.deb"
+    state: absent
+
+- name: "{{ dpkg_sig_name }} · Delete temporary public key"
+  ansible.builtin.file:
+    path: "{{ dpkg_sig_dest }}{{ dpkg_sig_key }}"
+    state: absent

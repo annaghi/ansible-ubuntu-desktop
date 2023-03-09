@@ -1,0 +1,35 @@
+---
+# tasks file for install_package_comp
+
+- name: "{{ comp_name }} · Create directory in {{ comp_dest }}"
+  ansible.builtin.file:
+    path: "{{ comp_dest }}/{{ comp_name }}"
+    state: directory
+    mode: 0755
+
+- name: "{{ comp_name }} · Download compressed file with checksum"
+  ansible.builtin.get_url:
+    url: "{{ comp_url }}"
+    dest: "{{ comp_dest }}/{{ comp_name }}/{{ comp_name }}.{{ comp_compression }}"
+    checksum: "{{ comp_checksum }}"
+
+- name: "{{ comp_name }} · Extract package"
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: "{{ comp_dest }}/{{ comp_name }}/{{ comp_name }}.{{ comp_compression }}"
+    dest: "{{ comp_dest }}/{{ comp_name }}"
+    mode: 0755
+    list_files: true
+  register: unarchive_result
+
+- name: "{{ comp_name }} · Create a symbolic link"
+  ansible.builtin.file:
+    src: "{{ comp_dest }}/{{ comp_name }}/{{ unarchive_result.files[comp_symlink | int] }}"
+    dest: "{{ comp_dest_symlink }}/{{ comp_name }}"
+    state: link
+  register: symbolic_link_result
+
+- name: "{{ comp_name }} · Delete temporary compressed file"
+  ansible.builtin.file:
+    path: "{{ comp_dest }}/{{ comp_name }}/{{ comp_name }}.{{ comp_compression }}"
+    state: absent

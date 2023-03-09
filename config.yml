@@ -1,0 +1,182 @@
+---
+config_packages_apt:
+  - ansible
+  - ansible-lint
+  - aptitude
+  - apt-transport-https
+  - baobab
+  - build-essential
+  - ca-certificates
+  - curl
+  - dconf-editor
+  - debsig-verify
+  - default-jre
+  - default-jdk
+  - direnv
+  - dpkg-sig
+  - exa
+  - ffmpeg
+  - fontconfig
+  - fzf
+  - gettext
+  - git
+  - git-crypt
+  - gnome-system-monitor
+  - gnupg
+  - gpg
+  - htop
+  - iotop
+  - jc
+  - jq
+  #- lsb-release
+  - nmap
+  - peek
+  - perl
+  - python3-pip
+  - renameutils
+  - shellcheck
+  - sysprof
+  - tree
+  - unrar
+  - unzip
+  - wget
+  - zsh
+
+config_packages_comp:
+  # https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
+  - comp_name: jetbrains-toolbox
+    comp_url: https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.27.2.13801.tar.gz
+    comp_compression: gz
+    comp_checksum: sha256:ece06062a936d0e765ebbdf5d89eb2224cdbaf059a1d8b049a16a6d7f3631275
+    comp_symlink: 1
+
+  # https://gitlab.gnome.org/GNOME/meld/-/releases
+  - comp_name: meld
+    comp_url: https://download.gnome.org/sources/meld/3.22/meld-3.22.0.tar.xz
+    comp_compression: xy
+    comp_checksum: sha256:3fc107c98ef6e75358ffd2b0d14c85ddb48fe14a11e939a94322faaa8e90c40d
+    comp_symlink: 1
+
+config_packages_deb_gpg:
+  # https://developer.hashicorp.com/vagrant/downloads
+  - deb_gpg_name: vagrant
+    deb_gpg_key_url: https://apt.releases.hashicorp.com/gpg
+    deb_gpg_keyring: hashicorp-archive-keyring.asc
+    deb_gpg_url: https://apt.releases.hashicorp.com
+    deb_gpg_release: jammy
+    deb_gpg_section: main
+    deb_gpg_source: hashicorp
+
+  # https://dbeaver.io/download/
+  - deb_gpg_name: dbeaver-ce
+    deb_gpg_key_url: https://dbeaver.io/debs/dbeaver.gpg.key
+    deb_gpg_keyring: dbeaver.asc
+    deb_gpg_url: https://dbeaver.io/debs/dbeaver-ce
+    deb_gpg_release: "/"
+    deb_gpg_source: dbeaver
+
+  # https://www.virtualbox.org/wiki/Linux_Downloads
+  - deb_gpg_name: virtualbox-7.0
+    deb_gpg_key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    deb_gpg_keyring: oracle-virtualbox-2016.asc
+    deb_gpg_url: https://download.virtualbox.org/virtualbox/debian
+    deb_gpg_release: jammy
+    deb_gpg_section: contrib
+    deb_gpg_source: oracle-virtualbox
+
+  # https://brave.com/linux/#release-channel-installation
+  - deb_gpg_name: brave-browser
+    deb_gpg_key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    deb_gpg_keyring: brave-browser-archive-keyring.gpg
+    deb_gpg_url: https://brave-browser-apt-release.s3.brave.com/
+    deb_gpg_release: stable
+    deb_gpg_section: main
+    deb_gpg_source: brave-browser-release
+
+  # https://code.visualstudio.com/docs/setup/linux
+  - deb_gpg_name: code
+    deb_gpg_key_url: https://packages.microsoft.com/keys/microsoft.asc
+    deb_gpg_keyring: microsoft.asc
+    deb_gpg_url: https://packages.microsoft.com/repos/code
+    deb_gpg_release: stable
+    deb_gpg_section: main
+    deb_gpg_source: vscode
+
+config_packages_deb_sha:
+  # https://github.com/kubernetes/minikube/releases/tag/v1.29.0
+  - deb_sha_name: minikube
+    deb_sha_url: https://github.com/kubernetes/minikube/releases/download/v1.29.0/minikube-linux-amd64
+    deb_sha_checksum: sha256:aafb65cbee8e971ec00509fdb1817254b17d6bee4890b839c3b6e8f11e97413a
+
+config_packages_deb_sig:
+  # https://slack.com/help/articles/115004809166-Verify-Slack-for-Linux--beta--package-signatures
+  - deb_sig_name: slack-desktop
+    deb_sig_url: https://downloads.slack-edge.com/releases/linux/4.29.149/prod/x64/slack-desktop-4.29.149-amd64.deb
+    deb_sig_key_url: https://slack.com/gpg/slack_pubkey_20220708.gpg
+    deb_sig_key: slack-debsig.gpg
+    deb_sig_thumbprint: D1EAC4827EB66C16
+    deb_sig_policy: |
+      <?xml version="1.0"?>
+      <!DOCTYPE Policy SYSTEM "https://www.debian.org/debsig/1.0/policy.dtd">
+      <Policy xmlns="https://www.debian.org/debsig/1.0/">
+      <Origin Name="Slack" id="D1EAC4827EB66C16" Description="Slack"/>
+      <Selection>
+      <Required Type="origin" File="slack-debsig.gpg" id="D1EAC4827EB66C16"/>
+      </Selection>
+      <Verification>
+      <Required Type="origin" File="slack-debsig.gpg" id="D1EAC4827EB66C16"/>
+      </Verification>
+      </Policy>
+
+config_packages_dpkg_sig:
+  # https://support.zoom.us/hc/en-us/articles/9836712961165-Downloading-the-public-key-for-Linux
+  - dpkg_sig_name: zoom
+    dpkg_sig_url: https://zoom.us/client/5.13.7.683/zoom_amd64.deb
+    dpkg_sig_key_url: https://zoom.us/linux/download/pubkey?version=5-12-6
+    dpkg_sig_key: zoom-signing-key.pub
+    dpkg_sig_thumbprint: 7B04A1B8DD79B481
+
+# https://github.com/ryanoasis/nerd-fonts
+config_fonts_nerd:
+  - font_name: Caskaydia
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/CascadiaCode.zip
+  - font_name: DroidSansMono
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/DroidSansMono.zip
+  - font_name: FiraCode
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip
+  - font_name: FiraMono
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraMono.zip
+  - font_name: IBMPlexMono
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/IBMPlexMono.zip
+  - font_name: Inconsolata
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Inconsolata.zip
+  - font_name: Iosevka
+    font_url: https://github.com/be5invis/Iosevka/releases/download/v19.0.1/super-ttc-iosevka-19.0.1.zip
+  - font_name: IosevkaTerm
+    font_url: https://github.com/be5invis/Iosevka/releases/download/v19.0.1/super-ttc-sgr-iosevka-term-19.0.1.zip
+  - font_name: JetBrainsMono
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip
+  - font_name: UbuntuMono
+    font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/UbuntuMono.zip
+
+config_packages_git:
+  - git_name: prezto
+    git_url: https://github.com/sorin-ionescu/prezto.git
+    git_dest: .zprezto
+    git_version: "master"
+  - git_name: nvm
+    git_url: https://github.com/nvm-sh/nvm.git
+    git_dest: .nvm
+    git_version: "v0.39.3"
+
+config_packages_ppa:
+  - ppa_name: obs-studio
+    ppa_url: ppa:obsproject/obs-studio
+  - ppa_name: gimp
+    ppa_url: ppa:ubuntuhandbook1/gimp
+  - ppa_name: inkscape
+    ppa_url: ppa:inkscape.dev/stable
+
+config_packages_bin:
+  - bin_name: postman
+    bin_url: https://dl.pstmn.io/download/latest/linux_64

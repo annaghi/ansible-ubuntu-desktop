@@ -1,0 +1,6 @@
+---
+- name: APT · Ensure configured packages are installed
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    update_cache: false
+  loop: "{{ config_packages_apt }}"

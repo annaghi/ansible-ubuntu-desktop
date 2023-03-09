@@ -1,0 +1,103 @@
+{
+    "breadcrumbs.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.formatOnSave": true,
+    "editor.lineHeight": 22,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [140],
+    "editor.wordWrapColumn": 140,
+    "[ansible, ansible-jinja]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[ignore]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "[properties]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[python]": {
+        "editor.defaultFormatter": null
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "files.associations": {
+        "**/roles/**/*.yml": "ansible",
+        "**/tasks/**/*.yml": "ansible"
+    },
+    "files.insertFinalNewline": true,
+    "files.watcherExclude": {
+        "**/.git": true,
+        "**/bower_components": true,
+        "**/elm-stuff": true,
+        "**/node_modules": true,
+        "**/vendor": true,
+        "**/wp-admin": true,
+        "**/wp-content/themes": true,
+        "**/wp-content/upgrade": true,
+        "**/wp-includes": true
+    },
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "markdown.validate.enabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "black",
+    "redhat.telemetry.enabled": false,
+    "search.exclude": {
+        "**/.git": true,
+        "**/bower_components": true,
+        "**/elm-stuff": true,
+        "**/node_modules": true,
+        "**/vendor": true,
+        "**/wp-content/themes": true,
+        "**/wp-content/upgrade": true
+    },
+    "shellcheck.run": "onSave",
+    "shellformat.effectLanguages": [
+        "azcli",
+        "dotenv",
+        "gitignore",
+        "hosts",
+        "ignore",
+        "jvmoptions",
+        "properties",
+        "shellscript",
+        "spring-boot-properties"
+    ],
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.fontSize": 12,
+    "todomd.sortProjectsView": "alphabetic",
+    "yaml.disableAdditionalProperties": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}",
+        "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": "*.playbook.{yml,yaml}"
+    },
+    "window.title": "${dirty} ${rootName}/${activeEditorMedium}",
+    "window.zoomLevel": 0.2,
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.labelFormat": "short",
+    "workbench.panel.defaultLocation": "right"
+}

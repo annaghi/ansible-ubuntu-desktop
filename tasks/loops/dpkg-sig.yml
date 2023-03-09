@@ -1,0 +1,11 @@
+---
+- name: DPKG SIG · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_dpkg_sig
+  vars:
+    dpkg_sig_name: "{{ item.dpkg_sig_name }}"
+    dpkg_sig_url: "{{ item.dpkg_sig_url }}"
+    dpkg_sig_key_url: "{{ item.dpkg_sig_key_url }}"
+    dpkg_sig_key: "{{ item.dpkg_sig_key }}"
+    dpkg_sig_thumbprint: "{{ item.dpkg_sig_thumbprint }}"
+  loop: "{{ config_packages_dpkg_sig }}"

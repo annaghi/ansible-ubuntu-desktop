@@ -1,0 +1,8 @@
+---
+# defaults file for install_package_dpkg_sig
+
+dpkg_sig_name: ""
+dpkg_sig_url: ""
+dpkg_sig_key_url: ""
+dpkg_sig_key: ""
+dpkg_sig_thumbprint: ""

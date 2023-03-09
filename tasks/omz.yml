@@ -1,0 +1,41 @@
+---
+- name: Oh My Zsh · Check that .oh-my-zsh exists
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  register: oh_my_zsh_stats
+
+- name: Oh My Zsh · Download install script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "{{ ansible_env.HOME }}/oh-my-zsh-install.sh"
+    mode: 0755
+  when: not oh_my_zsh_stats.stat.exists
+
+- name: Oh My Zsh · Install package
+  ansible.builtin.command: "{{ ansible_env.HOME }}/oh-my-zsh-install.sh --unattended --keep-zshrc"
+  register: install_omz_result
+  changed_when: install_omz_result.rc != 0
+  when: not oh_my_zsh_stats.stat.exists
+
+- name: Oh My Zsh · Delete temporary Oh My Zsh install script
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/oh-my-zsh-install.sh"
+    state: absent
+
+- name: Oh My Zsh · Install zsh-history-substring-search
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-history-substring-search
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-history-substring-search"
+    version: "v1.0.2"
+
+- name: Oh My Zsh · Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    version: "v0.7.0"
+
+- name: Oh My Zsh · Install zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    version: "0.8.0-alpha1-pre-redrawhook"

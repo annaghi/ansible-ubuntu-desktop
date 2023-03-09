@@ -1,0 +1,12 @@
+---
+# tasks file for install_package_ppa
+
+- name: "{{ ppa_name }} · Setup Debian repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ ppa_url }}"
+  when: ppa_name not in ansible_facts.packages
+
+- name: "{{ ppa_name }} · Ensure package is installed"
+  ansible.builtin.apt:
+    name: "{{ ppa_name }}"
+    update_cache: true

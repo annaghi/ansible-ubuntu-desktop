@@ -1,0 +1,6 @@
+---
+# defaults file for install_package_deb_sha
+
+deb_sha_name: ""
+deb_sha_url: ""
+deb_sha_checksum: ""

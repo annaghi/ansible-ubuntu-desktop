@@ -1,0 +1,9 @@
+---
+# defaults file for install_package_deb_sig
+
+deb_sig_name: ""
+deb_sig_url: ""
+deb_sig_key_url: ""
+deb_sig_key: ""
+deb_sig_thumbprint: ""
+deb_sig_policy: ""

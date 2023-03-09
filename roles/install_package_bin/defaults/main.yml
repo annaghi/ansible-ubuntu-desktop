@@ -1,0 +1,5 @@
+---
+# defaults file for install_package_bin
+
+bin_name: ""
+bin_url: ""

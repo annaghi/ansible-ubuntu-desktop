@@ -1,0 +1,11 @@
+---
+- name: Compressed · Ensure configured packages are installed
+  ansible.builtin.include_role:
+    name: install_package_comp
+  vars:
+    comp_name: "{{ item.comp_name }}"
+    comp_url: "{{ item.comp_url }}"
+    comp_compression: "{{ item.comp_compression }}"
+    comp_checksum: "{{ item.comp_checksum | default('') }}"
+    comp_symlink: "{{ item.comp_symlink | default(0) }}"
+  loop: "{{ config_packages_comp }}"

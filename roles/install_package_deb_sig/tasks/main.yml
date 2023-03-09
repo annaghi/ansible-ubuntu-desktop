@@ -1,0 +1,76 @@
+---
+# tasks file for install_package_deb_sig
+
+- name: "{{ deb_sig_name }} · Download official public key"
+  ansible.builtin.get_url:
+    url: "{{ deb_sig_key_url }}"
+    dest: "{{ deb_sig_dest }}/{{ deb_sig_key }}"
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Create debsig keyrings directory"
+  ansible.builtin.file:
+    path: "{{ deb_sig_keyrings }}/{{ deb_sig_thumbprint }}"
+    state: directory
+    mode: 0755
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Create an empty keyring"
+  ansible.builtin.file:
+    path: "{{ deb_sig_keyrings }}/{{ deb_sig_thumbprint }}/{{ deb_sig_key }}"
+    state: touch
+    mode: 0644
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Import public key"
+  ansible.builtin.command: "gpg
+    --no-default-keyring
+    --keyring {{ deb_sig_keyrings }}/{{ deb_sig_thumbprint }}/{{ deb_sig_key }}
+    --import {{ deb_sig_dest }}/{{ deb_sig_key }}"
+  register: import_public_key_result
+  failed_when: import_public_key_result.rc != 0
+  changed_when: import_public_key_result.rc == 0
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Create debsig policies directory"
+  ansible.builtin.file:
+    path: "{{ deb_sig_policies }}/{{ deb_sig_thumbprint }}"
+    state: directory
+    mode: 0755
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Create policy"
+  ansible.builtin.copy:
+    dest: "{{ deb_sig_policies }}/{{ deb_sig_thumbprint }}/{{ deb_sig_name }}.pol"
+    content: "{{ deb_sig_policy }}"
+    mode: 0644
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Download .deb file"
+  ansible.builtin.get_url:
+    url: "{{ deb_sig_url }}"
+    dest: "{{ deb_sig_dest }}/{{ deb_sig_name }}.deb"
+    timeout: 300
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Verify .deb file with public key"
+  ansible.builtin.command: "debsig-verify {{ deb_sig_dest }}/{{ deb_sig_name }}.deb"
+  register: verify_result
+  failed_when: verify_result.rc != 0
+  changed_when: verify_result.rc == 0
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Install package from .deb file"
+  ansible.builtin.apt:
+    deb: "{{ deb_sig_dest }}/{{ deb_sig_name }}.deb"
+    update_cache: false
+  when: deb_sig_name not in ansible_facts.packages
+
+- name: "{{ deb_sig_name }} · Delete temporary .deb file"
+  ansible.builtin.file:
+    path: "{{ deb_sig_dest }}/{{ deb_sig_name }}.deb"
+    state: absent
+
+- name: "{{ deb_sig_name }} · Delete temporary public key"
+  ansible.builtin.file:
+    path: "{{ deb_sig_dest }}/{{ deb_sig_key }}"
+    state: absent

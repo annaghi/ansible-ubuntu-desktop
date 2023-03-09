@@ -1,0 +1,152 @@
+---
+- name: Configure host
+  hosts: all
+
+  vars:
+    - bin_dest: "{{ ansible_env.HOME }}/Tools"
+    - comp_dest: /opt
+    - comp_dest_symlink: /usr/local/bin
+    - deb_gpg_keyrings: /usr/share/keyrings
+    - deb_sha_dest: /opt
+    - deb_sha_dest_symlink: /usr/local/bin
+    - deb_sig_keyrings: /usr/share/debsig/keyrings
+    - deb_sig_policies: /etc/debsig/policies
+    - deb_sig_dest: /opt
+    - dpkg_sig_dest: /opt
+    - font_dest: /usr/local/share/fonts/nerd
+
+  vars_files:
+    - config.yml
+
+  pre_tasks:
+    - name: APT · Updates
+      become: true
+      block:
+        - name: APT · Update cache if needed
+          ansible.builtin.apt:
+            update_cache: true
+            cache_valid_time: 3600
+
+        - name: APT · Update all packages to the latest version
+          ansible.builtin.apt:
+            name: "*"
+
+        - name: APT · Upgrade all packages to the latest version
+          ansible.builtin.apt:
+            upgrade: safe
+            update_cache: true
+      tags: always
+
+    - name: Create Tools directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/Tools"
+        state: directory
+        mode: 0755
+
+    - name: Facts · Gather ansible_facts.packages
+      ansible.builtin.package_facts:
+        manager: auto
+      tags: always
+
+    - name: Facts · Delegate ansible_facts to host
+      ansible.builtin.copy:
+        content: "{{ ansible_facts }}"
+        dest: ./ansible_facts.json
+        mode: 0600
+      delegate_to: localhost
+
+    - name: Facts · Delegate ansible_facts.packages to host
+      ansible.builtin.copy:
+        content: "{{ ansible_facts.packages }}"
+        dest: ./ansible_facts_packages.json
+        mode: 0600
+      delegate_to: localhost
+
+  tasks:
+    - name: Install packages as sudo
+      become: true
+      block:
+        - name: Install APT packages
+          ansible.builtin.import_tasks: tasks/loops/apt.yml
+          tags: always
+
+        - name: Set default shell to zsh
+          ansible.builtin.user:
+            name: "{{ ansible_env.USER }}"
+            shell: /usr/bin/zsh
+          tags: zsh
+
+        - name: Install compressed packages
+          ansible.builtin.import_tasks: tasks/loops/comp.yml
+          tags: comp
+
+        - name: Install Debian packages with GPG public key
+          ansible.builtin.import_tasks: tasks/loops/deb-gpg.yml
+          tags: gpg
+
+        - name: Install Debian packages with SHA checksum
+          ansible.builtin.import_tasks: tasks/loops/deb-sha.yml
+          tags: sha
+
+        - name: Install Debian packages with debsig verification
+          ansible.builtin.import_tasks: tasks/loops/deb-sig.yml
+          tags: deb-sig
+
+        - name: Install Debian packages with dpkg-sig verification
+          ansible.builtin.import_tasks: tasks/loops/dpkg-sig.yml
+          tags: dpkg-sig
+
+        - name: Install fonts
+          ansible.builtin.import_tasks: tasks/loops/font.yml
+          tags: font
+
+        - name: Install packages from untrusted PPA
+          ansible.builtin.import_tasks: tasks/loops/ppa.yml
+          tags: ppa
+
+        - name: Install Docker
+          ansible.builtin.import_tasks: tasks/docker.yml
+          tags: docker
+
+    - name: Install packages as user
+      block:
+        - name: Install psutil
+          ansible.builtin.command: "pip3 install psutil"
+          register: install_psutil_result
+          failed_when: install_psutil_result.rc != 0
+          changed_when: install_psutil_result.rc == 0
+
+        - name: Install packages from Git repository
+          ansible.builtin.import_tasks: tasks/loops/git.yml
+          tags: git
+
+        - name: Install binary packages
+          ansible.builtin.import_tasks: tasks/loops/bin.yml
+          tags: bin
+
+        - name: Install VSCode extensions
+          ansible.builtin.import_tasks: tasks/vscode.yml
+          tags: vscode
+
+        - name: Install dotfiles
+          ansible.builtin.import_tasks: tasks/dotfiles.yml
+          vars:
+            - debug_files: []
+          tags: dotfiles
+
+        - name: dconf settings
+          ansible.builtin.import_tasks: tasks/dconf.yml
+          tags: dconf
+
+  post_tasks:
+    - name: APT · Cleaning
+      become: true
+      block:
+        - name: APT · Remove obsolete packages from the cache
+          ansible.builtin.apt:
+            autoclean: true
+
+        - name: APT · Remove dependencies that are no longer required
+          ansible.builtin.apt:
+            autoremove: true
+  tags: always
