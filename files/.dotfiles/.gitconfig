@@ -2,5 +2,14 @@
 name = Anna Bansaghi
 email = anna.bansaghi@gmail.com
 
+[push]
+default = simple
+
+[pull]
+rebase = true
+
+[difftool]
+prompt = false
+
 [color]
 ui = true

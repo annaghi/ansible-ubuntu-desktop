@@ -31,8 +31,7 @@ chmod 600 <id>_rsa.pub
 
 #### Requirements
 
-- Ansible
-- clone of this repository
+- Install Ansible by running these commands:
 
 ```sh
 sudo apt --yes update && apt-get --yes upgrade
@@ -43,11 +42,15 @@ sudo apt --yes update
 sudo apt --yes install ansible python3-pip
 ```
 
-Clone this repository:
+- Clone this repository:
 
 ```sh
 git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
 ```
+
+- Configure Git with your user name and email address.
+Open `./files/.dotfiles/.gitconfig` in the root of this repository,
+and change `user.name` and `user.email` to your own.
 
 #### Run Ansible playbook
 
@@ -55,22 +58,17 @@ Go to the root of the cloned repository, and run the command. Enter your user ac
 
 ```sh
 ansible-playbook main.playbook.yml --ask-become-pass
+# or narrow down tasks with tags:
 ansible-playbook main.playbook.yml --ask-become-pass --tags zsh,nvm
 ```
 
-Finally, reboot your system.
+- Finally, reboot your system.
 
 ## Development
 
 ### Requirements
 
-- Ansible
-- Ansible Lint
-- Vagrant
-- VirtualBox
-- clone of this repository
-
-Install the requirements by running these commands:
+- Install the Ansible and Ansible Lint by running these commands:
 
 ```sh
 sudo apt --yes update && apt-get --yes upgrade
@@ -81,13 +79,13 @@ sudo apt --yes update
 sudo apt --yes install ansible ansible-lint python3-pip
 ```
 
-Clone this repository:
+- Clone this repository:
 
 ```sh
 git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
 ```
 
-Now you can use Ansible in order to install Vagrant and VirtualBox by running this command in the root of this repository:
+- Now you can use Ansible in order to install Vagrant and VirtualBox by running this command in the root of this repository:
 
 ```sh
 ansible-playbook dev.playbook.yml --ask-become-pass
