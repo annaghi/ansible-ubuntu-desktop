@@ -34,12 +34,12 @@ chmod 600 <id>_rsa.pub
 - Install Ansible by running these commands:
 
 ```sh
-sudo apt --yes update && apt-get --yes upgrade
-sudo apt --yes install curl git software-properties-common
+sudo apt update && apt upgrade --yes
+sudo apt install --yes curl git software-properties-common
 sudo add-apt-repository ppa:ansible/ansible
 
-sudo apt --yes update
-sudo apt --yes install ansible python3-pip
+sudo apt update
+sudo apt install --yes ansible python3-pip
 ```
 
 - Clone this repository:
@@ -71,12 +71,12 @@ ansible-playbook main.playbook.yml --ask-become-pass --tags zsh,nvm
 - Install the Ansible and Ansible Lint by running these commands:
 
 ```sh
-sudo apt --yes update && apt-get --yes upgrade
-sudo apt --yes install curl git software-properties-common
+sudo apt update && apt upgrade --yes
+sudo apt install --yes curl git software-properties-common
 sudo add-apt-repository ppa:ansible/ansible
 
-sudo apt --yes update
-sudo apt --yes install ansible ansible-lint python3-pip
+sudo apt update
+sudo apt install --yes ansible ansible-lint python3-pip
 ```
 
 - Clone this repository:
