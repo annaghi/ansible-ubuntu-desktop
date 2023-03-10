@@ -51,11 +51,15 @@ and change `user.name` and `user.email` to your own.
 
 #### Run Ansible playbook
 
-Go to the root of the cloned repository, and run the command. Enter your user account password when prompted for the `BECOME` password:
+Go to the root of the cloned repository, and run this command. Enter your user account password when prompted for the `BECOME` password:
 
 ```sh
 ansible-playbook main.playbook.yml --ask-become-pass
-# or narrow down tasks with tags:
+```
+
+or narrow down the tasks with tags:
+
+```sh
 ansible-playbook main.playbook.yml --ask-become-pass --tags zsh,nvm
 ```
 
@@ -65,7 +69,7 @@ ansible-playbook main.playbook.yml --ask-become-pass --tags zsh,nvm
 
 ### Requirements
 
-- Install the Ansible and Ansible Lint by running these commands:
+- Install Ansible and Ansible Lint by running these commands:
 
 ```sh
 sudo apt update && apt upgrade --yes
@@ -88,9 +92,9 @@ ansible-playbook dev.playbook.yml --ask-become-pass
 ### Start, provision, ssh, and destroy virtual machine
 
 ```sh
-vagrant up          # Start VM, and generates .vagrant directory
+vagrant up          # Start the VM, and generate /.vagrant directory
 vagrant provision   # Re-run playbook
 vagrant ssh-config  # Print SSH config
 vagrant ssh         # SSH into the VM
-vagrant destroy     # Remove VM for good
+vagrant destroy     # Destroy the VM for good
 ```
