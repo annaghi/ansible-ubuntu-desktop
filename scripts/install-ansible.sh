@@ -2,9 +2,7 @@
 
 # Install Ansible PPA.
 apt update && apt upgrade --yes
-apt install --yes curl git software-properties-common
-add-apt-repository ppa:ansible/ansible
+apt install --yes curl git software-properties-common python3-pip
 
 # Install Ansible.
-apt update
-apt install --yes ansible ansible-lint python3-pip
+pip3 install ansible ansible-lint

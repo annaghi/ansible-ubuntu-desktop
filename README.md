@@ -35,11 +35,8 @@ chmod 600 <id>_rsa.pub
 
 ```sh
 sudo apt update && apt upgrade --yes
-sudo apt install --yes curl git software-properties-common
-sudo add-apt-repository ppa:ansible/ansible
-
-sudo apt update
-sudo apt install --yes ansible python3-pip
+sudo apt install --yes curl git software-properties-common python3-pip
+pip3 install ansible
 ```
 
 - Clone this repository:
@@ -72,11 +69,8 @@ ansible-playbook main.playbook.yml --ask-become-pass --tags zsh,nvm
 
 ```sh
 sudo apt update && apt upgrade --yes
-sudo apt install --yes curl git software-properties-common
-sudo add-apt-repository ppa:ansible/ansible
-
-sudo apt update
-sudo apt install --yes ansible ansible-lint python3-pip
+sudo apt install --yes curl git software-properties-common python3-pip
+pip3 install ansible ansible-lint
 ```
 
 - Clone this repository:
