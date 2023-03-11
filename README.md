@@ -1,6 +1,13 @@
+
 # Ubuntu Desktop Ansible Playbook
 
 This playbook installs and configures most of the software I use on Ubuntu.
+
+## Customization
+
+- `config.yml` add or remove packages to be installed via tasks defined in `tasks/loops/`
+- `files/.dotfiles` replace with your own dotfiles
+- `tasks/` add or remove unique ways of installations and configurations
 
 ## Installation & Configuration
 
@@ -46,7 +53,7 @@ git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
 ```
 
 - Configure Git with your user name and email address.
-Open `./files/.dotfiles/.gitconfig` in the root of this repository,
+Open `files/.dotfiles/.gitconfig` in the root of this repository,
 and change `user.name` and `user.email` to your own.
 
 #### Run Ansible playbook
@@ -92,7 +99,7 @@ ansible-playbook dev.playbook.yml --ask-become-pass
 ### Start, provision, ssh, and destroy virtual machine
 
 ```sh
-vagrant up          # Start the VM, and generate /.vagrant directory
+vagrant up          # Start the VM, and generate .vagrant directory
 vagrant provision   # Re-run playbook
 vagrant ssh-config  # Print SSH config
 vagrant ssh         # SSH into the VM
