@@ -108,6 +108,11 @@ config_packages_deb_sha:
     deb_sha_url: https://github.com/kubernetes/minikube/releases/download/v1.29.0/minikube-linux-amd64
     deb_sha_checksum: sha256:aafb65cbee8e971ec00509fdb1817254b17d6bee4890b839c3b6e8f11e97413a
 
+  # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+  - deb_sha_name: kubectl
+    deb_sha_url: https://dl.k8s.io/release/v1.26.2/bin/linux/amd64/kubectl
+    deb_sha_checksum: sha256:fcf86d21fb1a49b012bce7845cf00081d2dd7a59f424b28621799deceb5227b3
+
 config_packages_deb_sig:
   # https://slack.com/help/articles/115004809166-Verify-Slack-for-Linux--beta--package-signatures
   - deb_sig_name: slack-desktop
