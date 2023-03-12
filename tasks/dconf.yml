@@ -14,6 +14,11 @@
     key: "/org/gnome/desktop/peripherals/mouse/left-handed"
     value: "true"
 
+- name: org/gnome/desktop/privacy/remember-recent-files
+  community.general.dconf:
+    key: "/org/gnome/desktop/privacy/remember-recent-files"
+    value: "false"
+
 - name: org/gnome/nautilus/preferences/show-hidden-files
   community.general.dconf:
     key: "/org/gnome/nautilus/preferences/show-hidden-files"
