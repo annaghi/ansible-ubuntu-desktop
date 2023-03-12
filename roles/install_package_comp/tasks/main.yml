@@ -22,9 +22,13 @@
     list_files: true
   register: unarchive_result
 
+- name: DEBUG
+  debug:
+    msg: "{{ unarchive_result.files }}"
+
 - name: "{{ comp_name }} · Create a symbolic link"
   ansible.builtin.file:
-    src: "{{ comp_dest }}/{{ comp_name }}/{{ unarchive_result.files[comp_symlink | int] }}"
+    src: "{{ comp_dest }}/{{ comp_name }}/{{ unarchive_result.files[0] }}/{{ comp_symlink }}"
     dest: "{{ comp_dest_symlink }}/{{ comp_name }}"
     state: link
   register: symbolic_link_result
