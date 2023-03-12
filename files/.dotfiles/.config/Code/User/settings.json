@@ -13,6 +13,9 @@
     "[ansible, ansible-jinja]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
     "[ignore]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
@@ -45,9 +48,11 @@
     },
     "files.associations": {
         "**/roles/**/*.yml": "ansible",
-        "**/tasks/**/*.yml": "ansible"
+        "**/tasks/**/*.yml": "ansible",
+        "*.svelte": "html"
     },
     "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     "files.watcherExclude": {
         "**/.git": true,
         "**/bower_components": true,

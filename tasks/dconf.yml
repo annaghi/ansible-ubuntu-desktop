@@ -55,17 +55,17 @@
         "org.gnome.baobab.desktop",
         "slack.desktop",
         "Zoom.desktop",
+        "org.gnome.Nautilus.desktop",
+        "org.gnome.gedit.desktop",
         "google-chrome.desktop",
         "firefox-developer-edition.desktop",
         "firefox_firefox.desktop",
         "brave-browser.desktop",
-        "org.gnome.Nautilus.desktop",
         "org.gnome.Terminal.desktop",
         "code.desktop",
         "jetbrains-idea-ce.desktop",
-        "org.gnome.gedit.desktop",
-        "virtualbox.desktop",
         "jetbrains-fleet.desktop",
+        "virtualbox.desktop",
       ]
 
 - name: org/gtk/settings/file-chooser/show-hidden
