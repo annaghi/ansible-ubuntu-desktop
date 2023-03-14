@@ -92,6 +92,7 @@
     ],
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 12,
+    "todomd.activatePattern": "**/{todo,TODO,todo.archive}.md",
     "todomd.sortProjectsView": "alphabetic",
     "yaml.disableAdditionalProperties": true,
     "yaml.schemas": {
