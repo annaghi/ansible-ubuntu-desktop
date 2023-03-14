@@ -52,8 +52,7 @@ pip3 install ansible
 git clone git@github.com:annaghi/ansible-ubuntu-desktop.git
 ```
 
-- Configure Git with your user name and email address.
-Open `files/.dotfiles/.gitconfig` in the root of this repository,
+- Open `files/.dotfiles/.gitconfig` in the root of this repository,
 and change `user.name` and `user.email` to your own.
 
 #### Run Ansible playbook
