@@ -66,6 +66,9 @@
     },
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
     "markdown.validate.enabled": true,
+    "markdownlint.config": {
+        "MD024": false
+    },
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "black",
     "redhat.telemetry.enabled": false,

@@ -39,6 +39,7 @@ config_packages_apt:
   - tree
   - unrar
   - unzip
+  - vlc
   - wget
   - zsh
 
