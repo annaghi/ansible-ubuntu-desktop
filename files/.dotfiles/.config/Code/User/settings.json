@@ -65,6 +65,8 @@
         "**/wp-includes": true
     },
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "latex-workshop.latex.build.forceRecipeUsage": false,
+    "latex-workshop.latex.magic.args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
     "markdown.validate.enabled": true,
     "markdownlint.config": {
         "MD024": false
