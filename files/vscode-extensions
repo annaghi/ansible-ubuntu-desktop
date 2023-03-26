@@ -17,6 +17,8 @@ eamodio.gitlens
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
 foxundermoon.shell-format
+hediet.vscode-drawio
+James-Yu.latex-workshop
 KevinRose.vsc-python-indent
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
