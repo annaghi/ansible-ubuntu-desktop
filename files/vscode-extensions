@@ -16,8 +16,8 @@ donjayamanne.python-extension-pack
 eamodio.gitlens
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
+formulahendry.auto-rename-tag
 foxundermoon.shell-format
-george-alisson.html-preview-vscode
 hediet.vscode-drawio
 James-Yu.latex-workshop
 KevinRose.vsc-python-indent
@@ -37,6 +37,7 @@ njpwerner.autodocstring
 redhat.ansible
 redhat.vscode-yaml
 rogalmic.bash-debug
+searKing.preview-vscode
 SimonSiefke.svg-preview
 svelte.svelte-vscode
 timonwong.shellcheck
