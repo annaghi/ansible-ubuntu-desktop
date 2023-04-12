@@ -95,6 +95,7 @@
         "shellscript",
         "spring-boot-properties"
     ],
+    "svelte.enable-ts-plugin": true,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 12,
     "todomd.activatePattern": "**/{todo,TODO,todo.archive}.md",
