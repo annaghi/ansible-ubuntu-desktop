@@ -16,6 +16,9 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
     "[ignore]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
