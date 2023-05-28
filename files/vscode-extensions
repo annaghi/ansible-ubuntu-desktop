@@ -10,6 +10,7 @@ bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
+denoland.vscode-deno
 donjayamanne.githistory
 donjayamanne.python-environment-manager
 donjayamanne.python-extension-pack

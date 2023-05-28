@@ -1,5 +1,6 @@
 {
     "breadcrumbs.enabled": true,
+    "deno.enable": true,
     "editor.cursorBlinking": "phase",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
