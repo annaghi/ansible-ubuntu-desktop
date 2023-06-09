@@ -8,6 +8,7 @@ bierner.markdown-footnotes
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
+bradymholt.pgformatter
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
 denoland.vscode-deno
@@ -20,6 +21,7 @@ esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 foxundermoon.shell-format
 github.vscode-github-actions
+Gruntfuggly.todo-tree
 hediet.vscode-drawio
 James-Yu.latex-workshop
 KevinRose.vsc-python-indent

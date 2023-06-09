@@ -44,6 +44,9 @@
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
+    "[sql]": {
+        "editor.defaultFormatter": "bradymholt.pgformatter"
+    },
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
     },
