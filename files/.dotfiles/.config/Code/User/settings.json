@@ -1,6 +1,5 @@
 {
     "breadcrumbs.enabled": true,
-    "deno.enable": true,
     "editor.cursorBlinking": "phase",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
@@ -43,9 +42,6 @@
     },
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "[sql]": {
-        "editor.defaultFormatter": "bradymholt.pgformatter"
     },
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
@@ -111,6 +107,7 @@
     "svelte.enable-ts-plugin": true,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 12,
+    "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "NOTE"],
     "todomd.activatePattern": "**/{todo,TODO,todo.archive}.md",
     "todomd.sortProjectsView": "alphabetic",
     "yaml.disableAdditionalProperties": true,
@@ -118,6 +115,7 @@
         "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}",
         "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": "*.playbook.{yml,yaml}"
     },
+    "VSCodeCounter.useGitignore": true,
     "window.title": "${dirty} ${rootName}/${activeEditorMedium}",
     "window.zoomLevel": 0.2,
     "workbench.colorTheme": "One Dark Pro Darker",

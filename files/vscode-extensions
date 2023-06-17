@@ -1,5 +1,4 @@
 aaron-bond.better-comments
-adpyke.vscode-sql-formatter
 batisteo.vscode-django
 bierner.github-markdown-preview
 bierner.markdown-checkbox
@@ -8,7 +7,6 @@ bierner.markdown-footnotes
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
-bradymholt.pgformatter
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
 denoland.vscode-deno
@@ -35,7 +33,6 @@ ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
 ms-toolsai.vscode-jupyter-cell-tags
 ms-toolsai.vscode-jupyter-slideshow
-ms-vscode-remote.remote-containers
 mtxr.sqltools
 njpwerner.autodocstring
 rangav.vscode-thunder-client
@@ -48,6 +45,7 @@ svelte.svelte-vscode
 tamasfe.even-better-toml
 timonwong.shellcheck
 tomoki1207.pdf
+uctakeoff.vscode-counter
 usernamehw.errorlens
 usernamehw.todo-md
 VisualStudioExptTeam.intellicode-api-usage-examples
