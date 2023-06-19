@@ -58,6 +58,7 @@
     "files.associations": {
         "**/roles/**/*.yml": "ansible",
         "**/tasks/**/*.yml": "ansible",
+        "*.mdx": "markdown",
         "*.svg": "html"
     },
     "files.insertFinalNewline": true,
