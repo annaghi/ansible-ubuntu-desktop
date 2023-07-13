@@ -22,6 +22,7 @@ github.vscode-github-actions
 Gruntfuggly.todo-tree
 hediet.vscode-drawio
 James-Yu.latex-workshop
+justusadam.language-haskell
 KevinRose.vsc-python-indent
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
@@ -38,6 +39,7 @@ njpwerner.autodocstring
 rangav.vscode-thunder-client
 redhat.ansible
 redhat.vscode-yaml
+ritwickdey.LiveServer
 rogalmic.bash-debug
 searKing.preview-vscode
 SimonSiefke.svg-preview
