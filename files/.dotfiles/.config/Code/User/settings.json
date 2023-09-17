@@ -79,7 +79,12 @@
     "latex-workshop.latex.magic.args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
     "markdown.validate.enabled": true,
     "markdownlint.config": {
-        "MD024": false
+        "MD024": false,
+        "MD033": false
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
     },
     "python.formatting.blackPath": "black",
     "python.formatting.provider": "black",
@@ -118,7 +123,6 @@
     },
     "VSCodeCounter.useGitignore": true,
     "window.title": "${dirty} ${rootName}/${activeEditorMedium}",
-    "window.zoomLevel": 0.2,
     "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,

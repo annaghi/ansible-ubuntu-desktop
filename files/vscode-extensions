@@ -19,6 +19,7 @@ esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 foxundermoon.shell-format
 github.vscode-github-actions
+golang.go
 Gruntfuggly.todo-tree
 hediet.vscode-drawio
 James-Yu.latex-workshop
@@ -26,6 +27,7 @@ justusadam.language-haskell
 KevinRose.vsc-python-indent
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
+ms-playwright.playwright
 ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
@@ -34,6 +36,7 @@ ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
 ms-toolsai.vscode-jupyter-cell-tags
 ms-toolsai.vscode-jupyter-slideshow
+ms-vscode.makefile-tools
 mtxr.sqltools
 njpwerner.autodocstring
 rangav.vscode-thunder-client
