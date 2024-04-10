@@ -19,6 +19,11 @@
     key: "/org/gnome/desktop/privacy/remember-recent-files"
     value: "false"
 
+- name: org/gnome/nautilus/list-view/default-visible-columns
+  community.general.dconf:
+    key: "/org/gnome/nautilus/list-view/default-visible-columns"
+    value: ["name", "type", "size", "date_modified"]
+
 - name: org/gnome/nautilus/preferences/show-hidden-files
   community.general.dconf:
     key: "/org/gnome/nautilus/preferences/show-hidden-files"
