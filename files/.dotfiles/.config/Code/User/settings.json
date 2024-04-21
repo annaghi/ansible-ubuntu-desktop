@@ -1,5 +1,8 @@
 {
     "breadcrumbs.enabled": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": "explicit"
+    },
     "editor.cursorBlinking": "phase",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
@@ -10,6 +13,7 @@
     "editor.minimap.enabled": false,
     "editor.rulers": [140],
     "editor.wordWrapColumn": 140,
+
     "[ansible, ansible-jinja]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
@@ -32,7 +36,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[markdown]": {
-        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
     },
     "[prisma]": {
         "editor.defaultFormatter": "Prisma.prisma"
@@ -54,6 +61,9 @@
     },
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
     },
     "[yaml]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
