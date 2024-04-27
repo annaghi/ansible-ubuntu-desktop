@@ -4,7 +4,6 @@
         "source.fixAll.markdownlint": "explicit"
     },
     "editor.cursorBlinking": "phase",
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
@@ -13,64 +12,10 @@
     "editor.minimap.enabled": false,
     "editor.rulers": [140],
     "editor.wordWrapColumn": 140,
-
-    "[ansible, ansible-jinja]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "[dotenv]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[ignore]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[markdown]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[php]": {
-        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
-    },
-    "[prisma]": {
-        "editor.defaultFormatter": "Prisma.prisma"
-    },
-    "[properties]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "[python]": {
-        "editor.defaultFormatter": null
-    },
-    "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "[toml]": {
-        "editor.defaultFormatter": "tamasfe.even-better-toml"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[xml]": {
-        "editor.defaultFormatter": "redhat.vscode-xml"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "files.associations": {
         "**/roles/**/*.yml": "ansible",
         "**/tasks/**/*.yml": "ansible",
+        "**/.editorconfig": "properties",
         "*.mdx": "markdown",
         "*.svg": "html"
     },
@@ -79,6 +24,7 @@
     "files.watcherExclude": {
         "**/.git": true,
         "**/bower_components": true,
+        "**/build": true,
         "**/elm-stuff": true,
         "**/node_modules": true,
         "**/vendor": true,
@@ -99,12 +45,16 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "phpsab.snifferShowSources": true,
     "python.formatting.blackPath": "black",
     "python.formatting.provider": "black",
+    "prettier.useEditorConfig": true,
+    "prettier.endOfLine": "lf",
     "redhat.telemetry.enabled": false,
     "search.exclude": {
         "**/.git": true,
         "**/bower_components": true,
+        "**/build": true,
         "**/elm-stuff": true,
         "**/node_modules": true,
         "**/vendor": true,
@@ -134,11 +84,84 @@
         "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}",
         "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": "*.playbook.{yml,yaml}"
     },
+    "VSCodeCounter.endOfLine": "\n",
     "VSCodeCounter.useGitignore": true,
     "window.title": "${dirty} ${rootName}/${activeEditorMedium}",
     "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.labelFormat": "short",
-    "workbench.panel.defaultLocation": "right"
+    "workbench.panel.defaultLocation": "right",
+
+    "[ansible, ansible-jinja]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[css][scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "[editorconfig]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dotenv]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[ignore]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.trimTrailingWhitespace": false
+    },
+    "[php]": {
+        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+    },
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    },
+    "[properties]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[python]": {
+        "editor.defaultFormatter": null
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "[txt]": {
+        "VSCodeCounter.endOfLine": "\r\n",
+        "prettier.endOfLine": "crlf"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
+    },
+    "[yaml][yml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
