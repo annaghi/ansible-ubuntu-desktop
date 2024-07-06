@@ -13,9 +13,14 @@
     "editor.rulers": [140],
     "editor.wordWrapColumn": 140,
     "files.associations": {
-        "**/roles/**/*.yml": "ansible",
-        "**/tasks/**/*.yml": "ansible",
+        "**/.distinclude": "properties",
         "**/.editorconfig": "properties",
+        "**/.env": "properties",
+        "**/.gitattributes": "properties",
+        "**/.gitignore": "properties",
+        "**/.prettierignore": "properties",
+        "*.code-workspace": "json",
+        "*.html": "html",
         "*.mdx": "markdown",
         "*.svg": "html"
     },
@@ -35,11 +40,17 @@
     },
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
     "latex-workshop.latex.build.forceRecipeUsage": false,
-    "latex-workshop.latex.magic.args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
+    "latex-workshop.latex.magic.args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+    ],
     "markdown.validate.enabled": true,
     "markdownlint.config": {
         "MD024": false,
-        "MD033": false
+        "MD033": false,
+        "MD041": false
     },
     "notebook.cellToolbarLocation": {
         "default": "right",
@@ -49,7 +60,6 @@
     "python.formatting.blackPath": "black",
     "python.formatting.provider": "black",
     "prettier.useEditorConfig": true,
-    "prettier.endOfLine": "lf",
     "redhat.telemetry.enabled": false,
     "search.exclude": {
         "**/.git": true,
@@ -57,9 +67,7 @@
         "**/build": true,
         "**/elm-stuff": true,
         "**/node_modules": true,
-        "**/vendor": true,
-        "**/wp-content/themes": true,
-        "**/wp-content/upgrade": true
+        "**/vendor": true
     },
     "shellcheck.run": "onSave",
     "shellformat.effectLanguages": [
@@ -76,7 +84,16 @@
     "svelte.enable-ts-plugin": true,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 12,
-    "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "NOTE"],
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]",
+        "NOTE"
+    ],
     "todomd.activatePattern": "**/{todo,TODO,todo.archive}.md",
     "todomd.sortProjectsView": "alphabetic",
     "yaml.disableAdditionalProperties": true,
@@ -88,7 +105,6 @@
     "VSCodeCounter.useGitignore": true,
     "window.title": "${dirty} ${rootName}/${activeEditorMedium}",
     "workbench.colorTheme": "One Dark Pro Darker",
-    "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.labelFormat": "short",
     "workbench.panel.defaultLocation": "right",
@@ -120,7 +136,7 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[json]": {
+    "[json][jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[markdown]": {
@@ -149,10 +165,12 @@
         "editor.defaultFormatter": "tamasfe.even-better-toml"
     },
     "[txt]": {
-        "VSCodeCounter.endOfLine": "\r\n",
         "prettier.endOfLine": "crlf"
     },
     "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[xml]": {
@@ -161,7 +179,5 @@
     "[yaml][yml]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    "workbench.editor.enablePreview": false
 }
