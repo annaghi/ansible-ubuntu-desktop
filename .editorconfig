@@ -12,22 +12,19 @@ trim_trailing_whitespace = true
 
 # Configurable Prettier behaviors
 end_of_line = lf
-indent_style = tab
-indent_size = 4
-max_line_length = 80
-
-[*.json]
-indent_style = space
-indent_size = 4
-
-[*.md]
 indent_style = space
 indent_size = 2
+max_line_length = 120
+
+# Custom settings
+[*.md]
 trim_trailing_whitespace = false
 
 [*.txt]
 end_of_line = crlf
 
 [*.{yml,yaml}]
-indent_style = space
-indent_size = 2
+max_line_length = 999
+
+[*.{html,svg,json,jsonc,json5,hjson,js,css,py,sh}]
+indent_size = 4

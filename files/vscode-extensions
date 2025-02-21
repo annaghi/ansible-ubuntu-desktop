@@ -7,6 +7,7 @@ bierner.markdown-footnotes
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
+charliermarsh.ruff
 christian-kohler.path-intellisense
 davidanson.vscode-markdownlint
 denoland.vscode-deno
@@ -19,7 +20,6 @@ esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 foxundermoon.shell-format
 github.vscode-github-actions
-golang.go
 gruntfuggly.todo-tree
 hediet.vscode-drawio
 james-yu.latex-workshop
@@ -42,13 +42,13 @@ ms-vscode.makefile-tools
 mtxr.sqltools
 njpwerner.autodocstring
 phoenisx.cssvar
-prisma.prisma
 rangav.vscode-thunder-client
 redhat.ansible
 redhat.vscode-xml
 redhat.vscode-yaml
 ritwickdey.liveserver
 rogalmic.bash-debug
+samuelcolvin.jinjahtml
 searking.preview-vscode
 simonsiefke.svg-preview
 svelte.svelte-vscode
