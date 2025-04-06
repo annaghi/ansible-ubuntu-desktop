@@ -40,12 +40,7 @@
     },
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
     "latex-workshop.latex.build.forceRecipeUsage": false,
-    "latex-workshop.latex.magic.args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOC%"
-    ],
+    "latex-workshop.latex.magic.args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
     "markdown.validate.enabled": true,
     "markdownlint.config": {
         "MD024": false,
@@ -84,16 +79,7 @@
     "svelte.enable-ts-plugin": true,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 12,
-    "todo-tree.general.tags": [
-        "BUG",
-        "HACK",
-        "FIXME",
-        "TODO",
-        "XXX",
-        "[ ]",
-        "[x]",
-        "NOTE"
-    ],
+    "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "NOTE"],
     "todomd.activatePattern": "**/{todo,TODO,todo.archive}.md",
     "todomd.sortProjectsView": "alphabetic",
     "yaml.disableAdditionalProperties": true,
@@ -104,10 +90,18 @@
     "VSCodeCounter.endOfLine": "\n",
     "VSCodeCounter.useGitignore": true,
     "window.title": "${dirty} ${rootName}/${activeEditorMedium}",
+    "window.zoomLevel": 0.4,
+    "workbench.activityBar.location": "bottom",
     "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
+
     "workbench.editor.labelFormat": "short",
-    "workbench.panel.defaultLocation": "right",
+    "workbench.editorAssociations": {
+        "*.svg": "default"
+    },
+    "workbench.panel.defaultLocation": "top",
+    "workbench.sideBar.location": "left",
 
     "[ansible, ansible-jinja]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
@@ -178,6 +172,5 @@
     },
     "[yaml][yml]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.editor.enablePreview": false
+    }
 }
