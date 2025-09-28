@@ -1,5 +1,6 @@
 {
     "breadcrumbs.enabled": true,
+    "editor.accessibilitySupport": "off",
     "editor.codeActionsOnSave": {
         "source.fixAll.markdownlint": "explicit"
     },
